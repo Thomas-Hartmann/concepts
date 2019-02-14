@@ -15,6 +15,18 @@ How to use the terminal.
 12. [MySQL](###-Mysql)
 13. [Email and Calendar](###-Thunderbird)
 14. [i3 view manager](###-i3)
+15. [netcat nc](###-nc)
+16. [cli translate](###-Translate)
+
+
+
+
+
+
+
+
+
+
 
 ### Linux
 - Create alias'es in terminal: `sudo nano ~/.bashrc` e.g: `alias cdjava='cd path/to/java/projects'`
@@ -301,4 +313,28 @@ Best solution was [calDav](http://davmail.sourceforge.net/):
 ### i3
 - Extend screen to HDMI:
   -  xrandr --output HDMI-2 --same-as eDP-1 --auto
+
+### netcat
+[netcat article](https://www.binarytides.com/netcat-tutorial-for-beginners/)
+nc command is the "Swiss-army knife for TCP/IP". A 'power version' of telnet. It can:
+1. create socket servers to listen for incoming connections on ports
+2. transfer files from the terminal etc
+3. Use as telnet: `nc -v google.com 80` then `GET index.html HTTP/1.1` and click 'enter' TWICE!
+4. As socket server: `nc -l -v 1234` netcat listen verbose on port 1234.
+5. socket client (e.g. from another terminal): `telnet localhost 1234`
+6. create an echo server: `nc -lp 1234` and from another node on network: `nc <node name or ip> 1234`
+
+### Translate
+[github link to program](https://github.com/soimort/translate-shell)
+
+- Simple translate (auto detects the input language)
+  - `trans <word>` autodetects the language and translates to english
+  - `trans :fr <phrase>` translates to french (:da for danish, :es for spanish)
+  - `trans zh: <phrase>` to tell google translate that this is chinese (zh=chinese)
+  - `trans fr:da 'cést la vie come sa'` put phrase or sentence in single-quote
+  - `trans -b :fr "Saluton, Mondo"` -b is for brief mode (less verbose)
+  - `trans :en word` use as **dictionary** when source and target-language are the same.
+  - `trans -d fr: mot` the -d flag to use dictionary mode what ever language.
+  - read from input file `trans -b -i input.txt :fr` use the -i flag
+  - read fro std in `echo "Saluton, Mondo" | trans -b -o output.txt :fr` it writes to an output file in this example.
 
